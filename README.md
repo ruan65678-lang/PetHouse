@@ -6,7 +6,7 @@ A Pet House é um pet shop que vende produtos (rações, acessórios, higiene) e
 
 ---
 
-## Integrantes do grupo
+## Integrantes do grupo 7
 
 1. Breno de Alencar Oliveira
 2. Estefany Isidro Pachacuti
@@ -132,15 +132,24 @@ Os arquivos PostgreSQL e `.dump` são versões antigas, mantidas apenas como ref
 
 ---
 
-## Grupo 7
+11. ## Contribuições dos integrantes
 
-1. Breno de Alencar Oliveira
-2. Estefany Isidro Pachacuti
-3. Giovanni Ferreira dos Santos
-4. Jhoselia Abigail Pilco Mollo
-5. Joana Manoele Freitas da Silva
-6. Julia Vilela
-7. Klener Nilmar Quispe Cari
-8. Luan de Oliveira
-9. Raphael David Silva Freitas
-10. Ruan Silva Costa
+**1. Breno de Alencar Oliveira:** Não participou das atividades de desenvolvimento do projeto.
+
+**2. Estefany Isidro Pachacuti:** Ajudou na identificação das entidades e atributos e na organização das tabelas.
+
+**3. Giovanni Ferreira dos Santos:** Ajudou na modelagem das tabelas associativas e colaborou com o grupo.
+
+**4. Jhoselia Abigail Pilco Mollo:** Colaborou nas discussões, na análise das necessidades do sistema e na organização das atividades.
+
+**5. Joana Manoele Freitas da Silva:** Ajudou na estruturação inicial do projeto e na identificação das entidades e tabelas.
+
+**6. Julia Vilela:** Colaborou na análise dos requisitos e na organização das informações do sistema.
+
+**7. Klener Nilmar Quispe Cari:** Ajudou nas discussões sobre a estrutura do banco de dados e na organização das informações.
+
+**8. Luan de Oliveira:** Atuou como líder do grupo, auxiliando os integrantes na compreensão de entidades, atributos e tabelas.
+
+**9. Raphael David Silva Freitas:** Colaborou na revisão das informações e na organização dos dados do projeto.
+
+**10. Ruan Silva Costa:** Participou da identificação das entidades e atributos e da organização das informações do projeto.
