@@ -1,0 +1,45 @@
+
+digraph PetHouse {
+  graph [rankdir=LR, splines=ortho, nodesep=0.45, ranksep=0.75, bgcolor="white", pad=0.25,
+         label="PET HOUSE — DIAGRAMA ENTIDADE-RELACIONAMENTO", labelloc=t, fontsize=22, fontname="Arial"];
+  node [shape=record, style="rounded,filled", fillcolor="#F4F8FD", color="#315A86", penwidth=1.5,
+        fontname="Arial", fontsize=10, margin="0.12,0.08"];
+  edge [color="#425466", fontname="Arial", fontsize=9, arrowsize=0.8, penwidth=1.2];
+
+  CLIENTE [label="{CLIENTE|PK id_cliente\\lnome\\ltelefone\\lemail\\lendereco\\ldata_cadastro\\l}"];
+  PET [label="{PET|PK id_pet\\lnome\\ltipo\\lraca\\lidade\\lFK cliente_id\\l}"];
+  AGENDAMENTO [label="{AGENDAMENTO|PK id_agendamento\\ldata\\lhorario\\ltipo_procedimento\\lstatus\\lFK pet_id\\lFK servico_id\\lFK funcionario_id\\l}"];
+  SERVICO [label="{SERVICO|PK id_servico\\lnome\\ldescricao\\lpreco\\l}"];
+  FUNCIONARIO [label="{FUNCIONARIO|PK id_funcionario\\lnome\\ltelefone\\lcargo\\l}"];
+  PEDIDO [label="{PEDIDO|PK id_pedido\\ldata\\lstatus\\ltotal\\lFK cliente_id\\l}"];
+  ITEM_PEDIDO [label="{ITEM_PEDIDO|PK id_item\\lquantidade\\lpreco_unitario\\lFK pedido_id\\lFK produto_id\\lUNIQUE (pedido_id, produto_id)\\l}"];
+  PRODUTO [label="{PRODUTO|PK id_produto\\lnome\\ldescricao\\lpreco\\lFK categoria_id\\l}"];
+  CATEGORIA [label="{CATEGORIA|PK id_categoria\\lnome\\ldescricao\\l}"];
+  ESTOQUE [label="{ESTOQUE|PK id_estoque\\lquantidade\\lestoque_minimo\\lFK produto_id (UNIQUE)\\l}"];
+  FORNECEDOR [label="{FORNECEDOR|PK id_fornecedor\\lnome\\lcnpj\\ltelefone\\lemail\\lendereco\\l}"];
+  FORNECEDOR_PRODUTO [label="{FORNECEDOR_PRODUTO|PK id\\lFK fornecedor_id\\lFK produto_id\\lpreco_compra\\ldata_fornecimento\\lUNIQUE (fornecedor_id, produto_id)\\l}"];
+  ORCAMENTO [label="{ORCAMENTO|PK id_orcamento\\ldata\\lstatus\\ltotal\\lFK cliente_id\\lFK pedido_id (UNIQUE)\\l}"];
+  FEEDBACK [label="{FEEDBACK|PK id_feedback\\lnota\\lcomentario\\lFK pedido_id\\l}"];
+  CONTA_RECEBER [label="{CONTA_RECEBER|PK id_conta_receber\\lFK pedido_id\\ldata_vencimento\\lvalor\\lstatus\\ldata_recebimento\\l}"];
+  CONTA_PAGAR [label="{CONTA_PAGAR|PK id_conta_pagar\\lFK fornecedor_id\\ldescricao\\ldata_vencimento\\lvalor\\lstatus\\ldata_pagamento\\l}"];
+  MOVIMENTO_CAIXA [label="{MOVIMENTO_CAIXA|PK id_movimento\\ltipo_movimento\\ldata_movimento\\ldescricao\\lvalor\\lFK conta_receber_id\\lFK conta_pagar_id\\lstatus_conciliacao\\l}"];
+
+  CLIENTE -> PET [label="1 : N"];
+  CLIENTE -> PEDIDO [label="1 : N"];
+  CLIENTE -> ORCAMENTO [label="1 : N"];
+  PET -> AGENDAMENTO [label="1 : N"];
+  SERVICO -> AGENDAMENTO [label="1 : N"];
+  FUNCIONARIO -> AGENDAMENTO [label="1 : N"];
+  PEDIDO -> ITEM_PEDIDO [label="1 : N"];
+  PRODUTO -> ITEM_PEDIDO [label="1 : N"];
+  CATEGORIA -> PRODUTO [label="1 : N"];
+  PRODUTO -> ESTOQUE [label="1 : 1"];
+  FORNECEDOR -> FORNECEDOR_PRODUTO [label="1 : N"];
+  PRODUTO -> FORNECEDOR_PRODUTO [label="1 : N"];
+  PEDIDO -> FEEDBACK [label="1 : N"];
+  PEDIDO -> CONTA_RECEBER [label="1 : N"];
+  FORNECEDOR -> CONTA_PAGAR [label="1 : N"];
+  CONTA_RECEBER -> MOVIMENTO_CAIXA [label="1 : N"];
+  CONTA_PAGAR -> MOVIMENTO_CAIXA [label="1 : N"];
+  CLIENTE -> ORCAMENTO [style=invis];
+}
