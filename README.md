@@ -132,7 +132,7 @@ Os arquivos PostgreSQL e `.dump` são versões antigas, mantidas apenas como ref
 
 ---
 
-11. ## Contribuições dos integrantes
+ ## Contribuições dos integrantes
 
 **1. Breno de Alencar Oliveira:** Não participou das atividades de desenvolvimento do projeto.
 
