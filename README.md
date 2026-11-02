@@ -4,6 +4,10 @@ Projeto de banco de dados para um pet shop de pequeno porte, desenvolvido pelo *
 
 A Pet House é um pet shop que vende produtos (rações, acessórios, higiene) e oferece serviços agendados (banho e tosa, entre outros). Hoje o controle é feito em cadernos e planilhas. Este projeto apresenta um banco de dados para centralizar os registros.
 
+## Diagrama Entidade-Relacionamento (DER)
+
+![Diagrama Entidade-Relacionamento (DER)](DER_PetHouse.png)
+
 ---
 
 ## Integrantes do grupo 7
