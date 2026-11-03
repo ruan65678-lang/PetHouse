@@ -1,101 +1,85 @@
-# Pet House
+<div align="center">
 
-Projeto de banco de dados para um pet shop de pequeno porte, desenvolvido pelo **Grupo 7** para a disciplina de Modelagem de Dados.
+# PetHouse
 
-A Pet House é um pet shop que vende produtos (rações, acessórios, higiene) e oferece serviços agendados (banho e tosa, entre outros). Hoje o controle é feito em cadernos e planilhas. Este projeto apresenta um banco de dados para centralizar os registros.
+**Projeto de banco de dados para gestão de pet shop**
 
-## Diagrama Entidade-Relacionamento (DER)
+Modelagem de Dados · Grupo 7 · MySQL · 17 tabelas
 
-![Diagrama Entidade-Relacionamento (DER)](DER_PetHouse.png)
+[Documentação](documentacao/Documentacao_DER_PetHouse.docx) · [Script SQL](banco_de_dados/pethouse_script_sql_phpMyadmin.sql) · [Modelo lógico](documentacao/Projeto_Logico_PetHouse.pdf) · [Entrega do grupo](documentacao/Grupo_07.pdf)
 
----
-
-## Integrantes do grupo 7
-
-1. Breno de Alencar Oliveira
-2. Estefany Isidro Pachacuti
-3. Giovanni Ferreira dos Santos
-4. Jhoselia Abigail Pilco Mollo
-5. Joana Manoele Freitas da Silva
-6. Julia Vilela
-7. Klener Nilmar Quispe Cari
-8. Luan de Oliveira
-9. Raphael David Silva Freitas
-10. Ruan Silva Costa
-
-## Repositório oficial no GitHub
-
-**Acesse o projeto:** https://github.com/ruan65678-lang/PetHouse
+</div>
 
 ---
 
-## O que tem nesta pasta
+## Sobre o projeto
 
+A PetHouse é um pet shop de pequeno porte que vende produtos e oferece serviços agendados, como banho e tosa. O projeto propõe um banco de dados para centralizar informações que antes eram controladas em cadernos e planilhas.
+
+| Área | Informações organizadas |
+| --- | --- |
+| Atendimento | Clientes, pets, agendamentos e avaliações |
+| Vendas | Produtos, categorias, pedidos e orçamentos |
+| Abastecimento | Fornecedores, preços de compra e estoque |
+| Gestão | Funcionários, serviços, contas e movimento de caixa |
+
+## Comece por aqui
+
+| Material | Acesso |
+| --- | --- |
+| Implementação atual em MySQL | [Abrir script SQL](banco_de_dados/pethouse_script_sql_phpMyadmin.sql) |
+| Documentação do projeto | [Baixar documento Word](documentacao/Documentacao_DER_PetHouse.docx) |
+| Material de entrega do Grupo 7 | [Abrir PDF](documentacao/Grupo_07.pdf) |
+| Projeto lógico | [Abrir PDF](documentacao/Projeto_Logico_PetHouse.pdf) |
+| Orientações do professor | [Abrir manual](orientacoes/MANUAL%20DA%20ENTREGA%20FINAL.pdf) |
+
+## Diagrama Entidade-Relacionamento
+
+[![Diagrama Entidade-Relacionamento da PetHouse](documentacao/diagramas/DER_PetHouse.png)](documentacao/diagramas/DER_PetHouse.png)
+
+[Ver imagem em tamanho original](documentacao/diagramas/DER_PetHouse.png) · [Abrir arquivo-fonte do diagrama](documentacao/diagramas/DER_PetHouse.dot)
+
+## Organização dos arquivos
+
+| Pasta | Conteúdo |
+| --- | --- |
+| [banco_de_dados/](banco_de_dados/) | Script MySQL usado na implementação atual |
+| [banco_de_dados/legado/](banco_de_dados/legado/) | Script PostgreSQL e backup da versão anterior |
+| [documentacao/](documentacao/) | Documentação Word e arquivos PDF do projeto |
+| [documentacao/diagramas/](documentacao/diagramas/) | Imagem e arquivo-fonte do DER |
+| [orientacoes/](orientacoes/) | Manual de entrega fornecido pelo professor |
+
+## Como importar no phpMyAdmin
+
+**Requisito:** servidor MySQL 8.0.16 ou superior, com acesso ao phpMyAdmin e permissão para criar o banco `pethouse`.
+
+1. Baixe o [script MySQL](banco_de_dados/pethouse_script_sql_phpMyadmin.sql). Na página do arquivo, use a opção de download do arquivo bruto.
+2. Abra o phpMyAdmin, normalmente em `http://localhost/phpmyadmin`.
+3. Acesse **Importar** e selecione `pethouse_script_sql_phpMyadmin.sql`.
+4. Clique em **Executar** e aguarde a conclusão.
+5. Selecione o banco `pethouse` e confira as 17 tabelas.
+
+O script cria o banco, as tabelas, os dados de teste, os índices e os relacionamentos. Também inclui consultas de exemplo.
+
+> Faça a importação inicial em um ambiente de estudo sem tabelas preexistentes no banco `pethouse`. O script usa `CREATE TABLE` e insere dados; executá-lo novamente sobre a mesma estrutura pode gerar erros de tabelas ou registros duplicados.
+
+### Conferência após a importação
+
+Na aba **SQL** do phpMyAdmin, execute:
+
+```sql
+USE pethouse;
+SHOW TABLES;
+
+SELECT COUNT(*) AS total_tabelas
+FROM information_schema.tables
+WHERE table_schema = 'pethouse'
+  AND table_type = 'BASE TABLE';
 ```
-PetHouse/
-├── MANUAL DA ENTREGA FINAL.pdf                    ← manual do professor
-├── README.md                                        ← este arquivo
-├── documentacao/
-│   ├── Documentacao_DER_PetHouse.docx               ← explicação completa do projeto e do DER
-│   ├── DER_PetHouse.png                             ← imagem do DER
-│   └── DER_PetHouse.dot                             ← arquivo do diagrama
-└── banco_de_dados/
-    ├── pethouse_script_sql_phpMyadmin.sql            ← script principal (MySQL, importar pelo phpMyAdmin)
-    ├── pethouse_script_sql_postgre.sql               ← arquivo antigo de referência (não usar nesta entrega)
-    └── pethouse_backup.dump                          ← backup antigo de referência (não usar nesta entrega)
-```
 
----
+O total esperado para a estrutura deste projeto é **17 tabelas**.
 
-## Como rodar o banco de dados
-
-O banco de dados foi feito no **MySQL** e pode ser importado diretamente pelo **phpMyAdmin**.
-
-### Passo a passo
-
-1. Abra o phpMyAdmin no seu navegador (normalmente em `http://localhost/phpmyadmin`).
-2. Clique em **Importar** no menu superior.
-3. Selecione o arquivo `pethouse_script_sql_phpMyadmin.sql` da pasta `banco_de_dados/`.
-4. Clique em **Executar**.
-
-O script foi preparado para criar o banco `pethouse`, as 17 tabelas, os dados fictícios e os relacionamentos. Depois da importação, confira no phpMyAdmin se a execução terminou sem erros.
-
-> **Requisito:** MySQL 8.0.16 ou superior (para suporte a `CHECK`), ou MariaDB equivalente.
-
----
-
-## O que a documentação explica
-
-O arquivo `.docx` na pasta `documentacao/` apresenta a análise e a modelagem do projeto:
-
-- como o pet shop funciona hoje e quais são os problemas que ele enfrenta;
-- o que o sistema precisa fazer (requisitos funcionais e não funcionais);
-- as regras de negócio do pet shop;
-- fluxogramas dos principais processos;
-- o Diagrama Entidade-Relacionamento (DER) com justificativa de cada decisão;
-- o modelo lógico convertido do DER;
-- a análise de normalização (1FN, 2FN e 3FN);
-- o dicionário de dados com todas as tabelas e colunas;
-- o script SQL completo (CREATE, INSERT, SELECT com JOIN, UPDATE, DELETE);
-- consultas gerenciais e de auditoria;
-- indicadores de BI e possibilidades de uso de IA.
-
----
-
-## O script SQL — o que tem dentro
-
-O arquivo `pethouse_script_sql_phpMyadmin.sql` foi gerado a partir da versão PostgreSQL e adaptado para MySQL. Ele contém:
-
-| O que faz | Descrição |
-|---|---|
-| `CREATE DATABASE` | Cria o banco `pethouse` com suporte a acentos (utf8mb4) |
-| `CREATE TABLE` | Cria as 17 tabelas com chaves primárias, restrições e tipos MySQL |
-| `INSERT INTO` | Insere os dados de teste (clientes, pets, produtos, pedidos etc.) |
-| `ALTER TABLE` | Adiciona as chaves estrangeiras e os relacionamentos entre tabelas |
-
----
-
-## As tabelas do banco
+## Tabelas do banco
 
 | Tabela | Para que serve |
 |---|---|
@@ -117,26 +101,33 @@ O arquivo `pethouse_script_sql_phpMyadmin.sql` foi gerado a partir da versão Po
 | `conta_receber` | Valores a receber dos pedidos |
 | `movimento_caixa` | Entradas, saídas e conciliação |
 
----
+## Documentação do projeto
 
-## Diferenças entre a versão MySQL e a versão PostgreSQL
+A [documentação em Word](documentacao/Documentacao_DER_PetHouse.docx) reúne a análise do pet shop, os requisitos, as regras de negócio, a modelagem, a normalização e o dicionário de dados.
 
-O professor pediu que o banco fosse implementado em MySQL/phpMyAdmin. A versão anterior estava em PostgreSQL. As principais adaptações feitas foram:
+O [projeto lógico](documentacao/Projeto_Logico_PetHouse.pdf) e o [material do Grupo 7](documentacao/Grupo_07.pdf) estão disponíveis na mesma pasta para consulta.
 
-| PostgreSQL | MySQL (versão atual) |
-|---|---|
-| `SERIAL` | `INT NOT NULL AUTO_INCREMENT` |
-| `NOW()` | `CURRENT_TIMESTAMP` |
-| `\c pet_house` (conectar) | `USE pethouse;` |
-| `TO_CHAR(data, 'YYYY-MM')` | `DATE_FORMAT(data, '%Y-%m')` |
-| `STRING_AGG(...)` | `GROUP_CONCAT(...)` |
-| `INTERVAL '7 days'` | `INTERVAL 7 DAY` |
+### Versões anteriores
 
-Os arquivos PostgreSQL e `.dump` são versões antigas, mantidas apenas como referência. Eles não fazem parte da implementação atual. Para esta entrega, considere somente `pethouse_script_sql_phpMyadmin.sql`.
+A implementação atual utiliza **MySQL/phpMyAdmin**. Os arquivos PostgreSQL e o backup `.dump` foram preservados em [banco_de_dados/legado/](banco_de_dados/legado/) como referência histórica.
 
----
+Esses arquivos não devem ser importados no phpMyAdmin. Para a implementação atual, utilize o script MySQL indicado acima.
 
- ## Contribuições dos integrantes
+## Integrantes do Grupo 7
+
+1. Breno de Alencar Oliveira
+2. Estefany Isidro Pachacuti
+3. Giovanni Ferreira dos Santos
+4. Jhoselia Abigail Pilco Mollo
+5. Joana Manoele Freitas da Silva
+6. Julia Vilela
+7. Klener Nilmar Quispe Cari
+8. Luan de Oliveira
+9. Raphael David Silva Freitas
+10. Ruan Silva Costa
+
+<details>
+<summary><strong>Contribuições dos integrantes</strong></summary>
 
 **1. Breno de Alencar Oliveira:** Não participou das atividades de desenvolvimento do projeto.
 
@@ -157,3 +148,9 @@ Os arquivos PostgreSQL e `.dump` são versões antigas, mantidas apenas como ref
 **9. Raphael David Silva Freitas:** Colaborou na revisão das informações e na organização dos dados do projeto.
 
 **10. Ruan Silva Costa:** Participou da identificação das entidades e atributos e da organização das informações do projeto.
+
+</details>
+
+---
+
+Projeto acadêmico desenvolvido para a disciplina de **Modelagem de Dados**.
